@@ -1,311 +1,292 @@
-// Модуль 2. Занятие 1. Массивы и функции
+// 1) Напиши скрипт, который, для объекта user,
+// последовательно:
 
-// Задача 1
+// a. добавляет поле mood со значением 'happy'
+// b. заменяет значение hobby на 'skydiving'
+// c. заменяет значение premium на false
+// d. выводит содержимое объекта user в формате
+// ключ:значение
+// используя Object.keys() и for...of
 
-// 1. Создайте массив styles с элементами «Джаз» и «Блюз».
-// 2. Добавьте «Рок-н-ролл» в конец.
-// 3. Замените значение в середине на «Классика».
-// 4. Удалите первый элемент и выведите его в консоль.
-// 5. Вставьте «Рэп» и «Регги» в начало массива.
+const user = {
+  name: "John",
+  age: 20,
+  hobby: "tennis",
+  premium: true
+};
 
-// Массив по ходу выполнения операций:
+function changeUser(obj) {
+  obj.mood = "happy";
+  obj.hobby = "skydiving";
+  obj.premium = false;
 
-// a. Джаз, Блюз
-// b. Джаз, Блюз, Рок-н-ролл
-// c. Джаз, Классика, Рок-н-ролл
-// d. Классика, Рок-н-ролл
-// e.Рэп, Регги, Классика, Рок - н - ролл;
+  for (const key of Object.keys(obj)) {
+    // console.log(`${obj[key]}`);
+  }
 
-// const styles = ["Джаз", "Блюз"];
+  return obj;
+}
 
-// styles.push("Рок-н-ролл");
+// console.log(changeUser(user));
 
-// console.log("1", styles);
+// -----------------------
 
-// styles.splice(1, 1, "Классика");
+// 2) У нас есть объект, в котором хранятся
+// зарплаты нашей команды.
+// Напишите код для суммирования всех зарплат
+// и сохраните результат в переменной sum.
+// Должно получиться 390.
+// Если объект salaries пуст, то результат должен быть 0.
 
-// console.log("2", styles);
+const salaries = {
+  John: 100,
+  Ann: 160,
+  Pete: 130
+};
 
-// const first = styles.shift();
+let sum = 0;
 
-// console.log(first);
+for (const salary of Object.values(salaries)) {
+  sum += salary;
+}
 
-// console.log("3", styles);
+// console.log(sum);
 
-// styles.unshift("Рэп", "Регги");
+// -----------------------
 
-// console.log("4", styles);
+// 3) Напишите ф-цию calcTotalPrice(stones, stoneName),
+// которая принимает массив
+// обьектов и строку с названием камня.
+// Ф-ция считает и возвращает общую стоимость
+// камней с таким именем, ценой и количеством из
+// обьекта
 
-// --------------------
+const stones = [
+  { name: "Изумруд", price: 1300, quantity: 4 },
+  { name: "Бриллиант", price: 2700, quantity: 3 },
+  { name: "Сапфир", price: 400, quantity: 7 },
+  { name: "Щебень", price: 200, quantity: 2 }
+];
 
-// Задача 2
+function calcTotalPrice(stones, stoneName) {
+  for (const stone of stones) {
+    if (stone["name"] === stoneName) {
+      return stone["price"] * stone["quantity"];
+    }
+  }
+}
 
-// Напишите функцию min(a,b), которая возвращает
-// меньшее из чисел a и b.
+// console.log(calcTotalPrice(stones, "Щебень"));
 
-// function min(a, b) {
-//   if (a === b) {
-//     return "Цифры равны";
-//   }
+// -----------------------
 
-//   return a > b ? b : a;
+// 4) Создайте объект calculator (калькулятор)
+// с тремя методами:
+
+// a. read(a, b)- запрашивает два значения и
+// сохраняет их как свойства объекта.
+// b. sum() - возвращает сумму сохранённых значений.
+// c. mult() - перемножает сохранённые
+// значения и возвращает результат.
+
+const calculator = {
+  value1: 0,
+  value2: 0,
+  read(a, b) {
+    this.value1 = a;
+    this.value2 = b;
+  },
+  sum() {
+    return this.value1 + this.value2;
+  },
+  mult() {
+    return this.value1 * this.value2;
+  }
+};
+
+// calculator.read(3, 4);
+const { value1, value2 } = calculator;
+// console.log({ value1, value2 });
+
+// console.log(calculator.sum());
+// console.log(calculator.mult());
+
+// -----------------------
+
+// 5) Напишите функцию, которая принимает
+// объект и возвращает
+// новый объект без указанного параметра
+
+// Ожидаемый результат - ({ a: 1, b: 2 }, 'b') => { a: 1 }
+
+const newObj = (obj, ...args) => {
+  console.log({ args });
+  let newObj = { ...obj };
+
+  console.log(newObj);
+
+  for (const arg of args) {
+    delete newObj[arg];
+  }
+
+  return newObj;
+};
+
+// console.log(newObj({ a: 1, b: 2 }, "b", "c", "d"));
+
+// const x = { a: 1, b: 2 };
+
+// delete x.a;
+
+// console.log({ x });
+
+// -----------------------
+
+// 6) Напишите функцию которая принимает
+// как параметр объект и формирует
+// объекты в новом масиве в формате [key, value]
+
+// const objData = {
+//   name: "John",
+//   surName: "Stones",
+//   age: 25,
+//   hobby: "football",
+//   merried: false
+// };
+
+// function getNewValues(obj) {
+//   const { name, surName, age, hobby, merried } = obj;
+
+//   let arr = [];
+
+//   arr.push({ name }, {surName}, {age}, {hobby}, {merried} });
+
+//   console.log(arr);
 // }
 
-// console.log(min(2, 2));
+// getNewValues(objData);
 
-// --------------------
+// -----------------------
 
-// Задача 3
+// 7) Напиши скрипт управления личным
+// кабинетом интернет банка.
+// Есть объект account в котором необходимо
+// реализовать методы для работы
+// с балансом и историей транзакций.
 
-// Напишите функцию logItems(array), которая получает
-// массив и использует цикл for,
-// который для каждого элемента массива будет выводить
-// в консоль сообщение в формате
-// <номер элемента> - <значение элемента>.
-// Нумерация элементов должна начинаться с 1.
+/*
+ * Типов транзацкий всего два.
+ * Можно положить либо снять деньги со счета.
+ */
+const Transaction = {
+  DEPOSIT: "deposit",
+  WITHDRAW: "withdraw"
+};
 
-// Например для первого элемента массива
-// ['Mango', 'Poly', 'Ajax'] с индексом
-// 0 будет выведено 1 - Mango, а для индекса 2 выведет 3 - Ajax.
+/*
+ * Каждая транзакция это объект со свойствами: id, type и amount
+ */
 
-// const x = ["Mango", "Poly", "Ajax"];
+const account = {
+  // Текущий баланс счета
+  balance: 0,
 
-// function logItems(array) {
-//   for (let i = 0; i < array.length; i++) {
-//     console.log(`${i + 1} - ${array[i]}`);
-//   }
-// }
+  // История транзакций
+  transactions: [],
 
-// logItems(x);
+  /*
+   * Метод создает и возвращает объект транзакции.
+   * Принимает сумму и тип транзакции.
+   */
+  createTransaction(type, amount) {
+    return {
+      type,
+      amount
+    };
+  },
 
-// --------------------
+  /*
+   * Метод отвечающий за добавление суммы к балансу.
+   * Принимает сумму транзакции.
+   * Вызывает createTransaction для создания объекта
+   * транзакции
+   * после чего добавляет его в историю транзакций
+   */
+  deposit(amount) {
+    this.balance += amount;
+    const transactionType = this.createTransaction(Transaction.DEPOSIT, amount);
+    this.transactions.push(transactionType);
+  },
 
-// Задача 4
+  /*
+   * Метод отвечающий за снятие суммы с баланса.
+   * Принимает сумму танзакции.
+   * Вызывает createTransaction для создания объекта
+   * транзакции
+   * после чего добавляет его в историю транзакций.
+   *
+   * Если amount больше чем текущий баланс, выводи
+   * сообщение
+   * о том, что снятие такой суммы не возможно,
+   *  недостаточно средств.
+   */
+  withdraw(amount) {
+    if (amount > this.balance) {
+      return "Снятие такой суммы не возможно, недостаточно средств";
+    } else {
+      this.balance -= amount;
+      const transactionType = this.createTransaction(
+        Transaction.WITHDRAW,
+        amount
+      );
+      this.transactions.push(transactionType);
+    }
+  },
 
-// Вернуть отсортированную копию по алфавиту
-// (не меняя исходный массив)
-// не использовать Array.prototype.sort()
+  /*
+   * Метод возвращает текущий баланс
+   */
+  getBalance() {
+    return this.balance;
+  },
 
-const ex4 = [2, 65, 89];
-
-function bubbleSort(arr) {
-  for (let i = 0; i < arr.length; i++) {
-    console.log("1", arr[i]);
-    for (let j = 0; j < arr.length; j++) {
-      console.log("2", arr[j]);
-      if (arr[j] > arr[j + 1]) {
-        let tmp = arr[j];
-        arr[j] = arr[j + 1];
-        arr[j + 1] = tmp;
+  /*
+   * Метод ищет и возвращает объект транзации по id
+   */
+  getTransactionDetails(id) {
+    for (const [index, transaction] of this.transactions.entries()) {
+      if (index === id) {
+        return transaction;
       }
     }
-  }
+    // for (let i = 0; i < this.transactions.length; i++) {
+    //   if (i === id) {
+    //     return transaction[i];
+    //   }
+    // }
+  },
 
-  return arr;
-}
-
-// console.log(bubbleSort(ex4));
-
-// --------------------
-
-// Задача 5
-
-// Напиши функцию findSmallestNumber(numbers)которая
-// ищет самое маленькое число в массиве.
-
-const ex5 = [104, 67, 54, 89, 2, 19];
-
-function findSmallestNumber(arr) {
-  let min = arr[0];
-
-  for (number of arr) {
-    if (min > number) {
-      min = number;
+  /*
+   * Метод возвращает количество средств
+   * определенного типа транзакции из всей истории
+   * транзакций
+   */
+  getTransactionTotal(type) {
+    let sum = 0;
+    for (transaction of this.transactions) {
+      if (transaction["type"] === type) {
+        sum += transaction["amount"];
+      }
     }
+
+    return sum;
   }
-
-  return min;
-}
-
-// console.log(findSmallestNumber(ex5));
-
-// --------------------
-
-// Задача 6
-
-// Напиши функцию calculateAverage()
-// которая принимает произвольное кол-во
-// аргументов и возвращает их среднее значение.
-// Все аругменты будут только числами.
-
-function calculateAverage() {
-  const args = arguments;
-  let sum = 0;
-  let arrLength = 0;
-  for (arg of args) {
-    if (typeof arg !== "number") {
-      continue;
-    } else {
-      sum += arg;
-      arrLength++;
-    }
-  }
-
-  return sum / arrLength;
-}
-
-// console.log(calculateAverage(1, 2, 3, 4, "number"));
-
-// --------------------
-
-// Модуль 2. Занятие 2. Массивы и функции
-
-// Задача 7
-
-// Напиши функцнию findLongestWord(string)
-// которая принимает произвольную строку
-// состоящую только из слов разделённых
-// пробелом (параметр string)
-// и возвращает самое длинное слово в этой строке.
-
-function findLongestWord(string) {
-  const splitedArr = string.split(" ");
-  let longest = splitedArr[0];
-
-  for (text of splitedArr) {
-    debugger;
-    if (text.length > longest.length) {
-      longest = text;
-    }
-  }
-
-  return longest;
-}
-
-findLongestWord("Всем привет, я Ашот");
-
-// ----------------------
-
-// Задача 8
-
-// Напишите функцию greet(name), которая
-// при вызове будет получать имя (например, «Василий»)
-// и логировать строку «Привет, <имя>».
-// В случае отсутствующего аргумента выводить «Привет, гость»
-
-function greet(name) {
-  return name ? `Привет, ${name}` : "Привет, гость";
-}
-
-// console.log(greet());
-
-// ----------------------
-
-// Задача 9
-
-// Напишите функцию findTheColor()
-// которая принимает название цвета
-// и определяет его наличие в масиве.
-// Аргумент должен быть строкой.
-
-const colors = ["red", "green", "blue"];
-
-function findTheColor(colorName) {
-  if (typeof colorName !== "string") {
-    return "Допускается только строка";
-  }
-
-  if (colors.includes(colorName)) {
-    return "Цвет найден";
-  } else {
-    return "Цвет не найден";
-  }
-}
-
-console.log(findTheColor(2));
-
-// ----------------------
-
-// Задача 10
-
-// Выполните рефакторинг заменив объявление
-// функции на стрелочную функцию.
-
-function checkNumbers(a, b) {
-  if (a > b) {
-    return `число ${a} больше ${b}`;
-  }
-
-  return `число ${b} больше ${a}`;
-}
-
-const checkNumbers2 = (a, b) => {
-  return a > b ? `число ${a} больше ${b}` : `число ${b} больше ${a}`;
 };
 
-console.log(checkNumbers2(1, 2));
+account.deposit(1000);
+account.deposit(2000);
+account.withdraw(500);
 
-// ----------------------
+console.log(account.getTransactionTotal(Transaction.DEPOSIT));
 
-// Задача 11
-
-// Выполните рефакторинг заменив объявление
-// функции на стрелочную функцию.
-
-function mult(x, y, z) {
-  return x * y * z;
-}
-
-const mult2 = (x, y, z) => x * y * z;
-
-console.log(mult2(2, 3, 4));
-
-// ----------------------
-
-// Задача 12
-
-// Напишите функции для работы с коллекцией обучающих
-// курсов courses:
-
-// 1. addCourse(name) - добавляет курс в конец коллекции
-// 2. removeCourse(name) - удаляет курс из коллекции
-// 3. updateCourse(oldName, newName)- изменяет имя на новое
-
-const courses = ["HTML", "CSS", "JavaScript", "React"];
-
-const addCourse = name => {
-  const x = courses.push(name);
-  console.log(x);
-  return courses;
-};
-
-console.log(addCourse("C++"));
-
-const removeCourse = name => {
-  const searchIndex = courses.indexOf(name);
-  console.log(searchIndex);
-  if (searchIndex !== -1) {
-    console.log(courses.splice(searchIndex, 1));
-    courses.splice(searchIndex, 1);
-  } else {
-    return "Данное значение не найдено";
-  }
-
-  return courses;
-};
-
-console.log(removeCourse("Scala"));
-
-const updateCourse = (oldName, newName) => {
-  const searchIndex = courses.indexOf(oldName);
-
-  if (searchIndex !== -1) {
-    courses.splice(searchIndex, 1, newName);
-  } else {
-    return "Данное значение не найдено";
-  }
-
-  return courses;
-};
-
-console.log(updateCourse("JavaScript", "Typescript"));
+console.log({ balance: account.balance, transactions: account.transactions });
