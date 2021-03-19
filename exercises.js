@@ -3,14 +3,47 @@
 1.Выполнить сортировку массива цен по убыванию и возрастанию.
 */
 
+const prices = [1000, 240, 670, 360, 89, 20];
+
+// -1 1 0
+
+// prices.sort((a, b) => {
+//   console.log({ a, b });
+//   return a - b;
+// });
+
+// prices.sort((a, b) => {
+//   return b - a;
+// });
+
+// console.log(prices);
+
 // -------------------
 
 /* 
 --- Сортировка строк ---
-2. Выполнить сортировку массива названий мониторов в алфавитном и обратном алфавитном порядке.
+2. Выполнить сортировку массива названий мониторов в алфавитном и 
+обратном 
+алфавитном порядке.
 */
 
-const monitors = ["SAMSUNG", "LG", "ASUS", "DELL", "BENQ"];
+const monitors = ["SAMSUNG", "LG", "ASUS", "DELL", "BENQ", "ACER"];
+
+// const sorted = monitors.sort();
+
+// monitors.sort((a, b) => {
+//   if (a > b) {
+//     return -1;
+//   }
+//   if (a < b) {
+//     return 1;
+//   }
+
+//   return 0;
+// });
+
+// console.log(monitors);
+// console.log(sorted);
 
 // -------------------
 
@@ -30,11 +63,20 @@ const items = [
   { name: "BENQ", price: 7000 }
 ];
 
+const items2 = [...items];
+
+const sorted = items2.sort((a, b) => {
+  return a.price - b.price;
+});
+
+console.log(sorted);
+
 // -------------------
 
 /*
 --- Метод Array.prototype.flatMap ---
-4.Собрать в allTopics массив всех предметов всех курсов используя flatMap.
+4.Собрать в allTopics массив всех предметов всех 
+курсов используя flatMap.
 Используя Array.prototype.filter выполнить фильтрацию, 
 оставив в uniqueTopics только уникальные элементы.
 */
@@ -77,12 +119,31 @@ const courses = [
   }
 ];
 
+const allTopics = courses.flatMap(course => course.topics);
+
+// const uniqueTopics = allTopics.filter(
+//   (value, index, self) => self.indexOf(value) === index
+// );
+
+// const alternative = [...new Set(allTopics)];
+
+// console.log(allTopics);
+
+// console.log(alternative);
+
+// console.log(uniqueTopics);
+
 // -------------------
 
 /* 
 --- Чейнинг методов ---
-5. Выполнить рефакторинг используя цепочку методов flatMap и filter.
-*/
+5. Выполнить рефакторинг используя цепочку методов flatMap и filter */
+
+// const uniqueValues = courses
+//   .flatMap(course => course.topics)
+//   .filter((value, index, self) => self.indexOf(value) === index);
+
+// console.log(uniqueValues);
 
 // -------------------
 
@@ -91,6 +152,18 @@ const courses = [
 6. Используя функцию map назначить скидку 20% на фрукты в масиве, 
 назначить id для каждого продукта
 */
+
+const fruits = [
+  { name: "apple", price: 200 },
+  { name: "orange", price: 300 },
+  { name: "grapes", price: 750 }
+];
+
+const discountedFruits = fruits.map((fruit, index) => {
+  return { id: index + 1, name: fruit.name, price: fruit.price * 0.8 };
+});
+
+// console.log(discountedFruits);
 
 // -------------------
 
@@ -121,5 +194,12 @@ const workers = [
     years: 22
   }
 ];
+
+const sumOfYears = workers.reduce((acc, currentVal, currentIndex, self) => {
+  console.log(acc);
+  return acc + currentVal.years;
+}, 0);
+
+console.log(sumOfYears);
 
 // -------------------
