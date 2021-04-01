@@ -1,0 +1,11 @@
+.even {
+  color: red;
+}
+
+.odd {
+  color: blue;
+}
+
+.error {
+  border-color: red;
+}
