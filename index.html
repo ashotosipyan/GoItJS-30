@@ -9,14 +9,17 @@
 </head>
 <body>
     <div id='container'>
-        <!-- <form>
+         <!-- <form>
             <label>Логин</label>
-            <input id="login" style="display: block;" />
+            <input id="login" style="display: block;" autocomplete="off" />
+            <div id="loginInfo" style="display: none;">Минимум 4 символа</div>
             <label>Пароль</label>
-            <input id="password" style="display: block;" />
+            <input id="password" type="password" style="display: block;" />
+            <div id="passwordInfo" style="display: none;">От 8-30 символов</div>
             <label for="agree">Я ознакомил(ся/ась) с правилами обработки персональных данных</label>
             <input id="checkBox" type="checkbox" name="agree"  />
-            <button type="submit" id="submitButton" style="display: block;" disabled>Войти</button>
+            <button type="submit" id="submitButton" style="display: block;">Войти</button>
+            <div id='msgBox'></div>
         </form> -->
     </div>
     <script src="./index.js" />
