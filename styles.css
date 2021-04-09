@@ -1,11 +1,37 @@
-.even {
-  color: red;
+.itemDiv {
+  margin: 20px;
+  padding: 4px;
+  color: #000;
+  border: 3px black solid;
+  background-color: blanchedalmond;
 }
 
 .odd {
-  color: blue;
+  background-color: rgb(219, 73, 73);
+  color: azure;
 }
 
-.error {
-  border-color: red;
+.selected {
+  background-color: blue !important;
+}
+
+#square {
+  width: 150px;
+  height: 150px;
+  background-color: transparent;
+  border: 2px solid black;
+  margin-top: 20px;
+}
+
+.activeBtn {
+  border: 3px solid blue;
+}
+
+.addScroll {
+  width: 150px;
+  height: 150px;
+  background-color: transparent;
+  border: 2px solid black;
+  margin-top: 20px;
+  display: flex;
 }
