@@ -1,0 +1,15 @@
+Установка BABEL
+
+    - установить babel-cli babel-core babel-preset-es2015
+    - установить http-server для проверки
+    - добавить npm скрипты - "babel": "babel --presets es2015 main.js -o build/main.bundle.js" и "start": "http-server"
+
+Установка и настройка WEBPACK
+
+    - установить webpack webpack-cli webpack-dev-server
+    - добавить скрипт "dev": "webpack --mode development"
+    - создать webpack.config.js
+    - установить html-webpack-plugin
+    - установить css-loader style-loader sass-loader sass
+    - установить babel-loader @babel/preset-env
+    - создать файл babel.config.json
