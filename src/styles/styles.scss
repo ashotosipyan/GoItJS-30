@@ -34,9 +34,6 @@ body {
       list-style-type: none;
       a {
         text-decoration: none;
-        &.active {
-          background-color: red;
-        }
       }
     }
   }
@@ -84,7 +81,6 @@ body {
 }
 
 #saveUser {
-  width: 30%;
   background-color: burlywood;
   margin-top: 30px;
   border-radius: 50px;

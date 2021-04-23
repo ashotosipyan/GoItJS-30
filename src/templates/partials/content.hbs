@@ -1,0 +1,6 @@
+{{#each pageContent}}
+<div id="page{{ @index }}" class="content" style="background-color: {{ this.bgColor }};">
+    <h1>{{ this.title }}</h1>
+    <div>{{ this.description }}</div>
+</div>
+{{/each}}

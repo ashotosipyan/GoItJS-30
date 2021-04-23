@@ -15,7 +15,7 @@ npm start
 Перейти по ссылке 127.0.0.1:8080
 ```
 
-## Полезные ссыдки
+## Полезные ссылки
 
 [Webpack](https://webpack.js.org/)
 [Babel](https://babeljs.io/)
