@@ -1,24 +1,22 @@
-import { USERNAME_KEY } from "./constants";
+import { USER_DATA_FLAG } from "./constants";
 
 class LocalStorageWrapper {
-  checkUser() {
+  checkUserData() {
     try {
-      const isUserExists = localStorage.getItem(USERNAME_KEY);
-
-      return isUserExists ? isUserExists : false;
+      const isUserDataExists = localStorage.getItem(USER_DATA_FLAG);
+      console.log(isUserDataExists);
+      return isUserDataExists ? true : false;
     } catch (error) {
       console.error(error);
     }
   }
-  addUser(userName) {
+  setUserData() {
     try {
-      localStorage.setItem(USERNAME_KEY, userName);
+      localStorage.setItem(USER_DATA_FLAG, true);
     } catch (error) {
       console.error(error);
     }
   }
-
-  removeUser() {}
 }
 
 export default LocalStorageWrapper;
