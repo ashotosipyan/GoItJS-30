@@ -11,6 +11,14 @@ body {
   height: 100%;
 }
 
+#timer {
+  position: fixed;
+  left: 0;
+  top: 50%;
+  padding: 10px 20px;
+  background-color: bisque;
+}
+
 .navBar {
   position: fixed;
   background-color: bisque;

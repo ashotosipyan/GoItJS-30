@@ -1,7 +1,17 @@
-<div id="modal" {{#if name}} style="display: none;" {{/if}}>
-    <div>
-        <h3>Чтобы продолжить, авторизуйтесь</h3>
-        <input id="nameInput" class="dateSaveInput" placeholder="Введите свое имя" autocomplete="off" />
-        <button id="saveUser">Сохранить</button>
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Добро пожаловать!</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Пользуясь нашим сайтом вы соглашайтесь с нашей политикой конфиденциальности
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Отмена</button>
+                <button type="button" id="saveUserData" class="btn btn-primary">Хорошо</button>
+            </div>
+        </div>
     </div>
 </div>
