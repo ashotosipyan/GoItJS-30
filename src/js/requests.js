@@ -9,3 +9,29 @@ export const getPhotos = () => {
     })
     .catch(err => console.log(err));
 };
+
+export const test = async (methodType, data = null, toDoID = null) => {
+  let baseUrl = "https://jsonplaceholder.typicode.com/todos/";
+
+  if (methodType !== "POST") {
+    baseUrl = `${baseUrl}${toDoID}`;
+  }
+  console.log(baseUrl);
+  try {
+    const test = await fetch(baseUrl, {
+      method: methodType,
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: data ? JSON.stringify(data) : null
+    });
+
+    if (test.status === 201) {
+      return test.json();
+    } else {
+      return test.status;
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};

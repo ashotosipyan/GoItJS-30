@@ -2,42 +2,25 @@ import { getPhotos } from "./js/requests";
 import LocalStorageWrapper from "./js/utils";
 import "./styles/styles.scss";
 import template from "./templates/main.hbs";
+import { test } from "./js/requests";
 
-window.onload = () => {
-  const container = document.getElementById("container");
-  const timer = document.getElementById("timer");
+let state = [];
 
-  const localStorageWrapper = new LocalStorageWrapper();
+window.onload = async () => {
+  // const x = await test("POST", {
+  //   title: "fugiat veniam minus11111",
+  //   completed: false
+  // });
 
-  setInterval(() => {
-    let currentTime = new Date();
-    let hours = currentTime.getHours();
-    let minutes = currentTime.getMinutes();
-    let seconds = currentTime.getSeconds();
+  // if (x) {
+  //   state.push(x);
+  // }
 
-    timer.innerHTML = `${hours}:${minutes}:${seconds}`;
-  }, 1000);
+  const arr = { a: 1, b: 2 };
 
-  container.innerHTML = template({ isLoading: true });
+  // arr = { a: 3 };
 
-  const photos = getPhotos();
+  arr.c = 3;
 
-  photos
-    .then(res => {
-      container.innerHTML = template({ pageContent: res, isLoading: false });
-    })
-    .catch(err => console.log(err));
-
-  const modal = new bootstrap.Modal(document.getElementById("exampleModal"));
-  const saveUserData = document.getElementById("saveUserData");
-  saveUserData.addEventListener("click", () => {
-    localStorageWrapper.setUserData();
-    modal.hide();
-  });
-
-  if (!localStorageWrapper.checkUserData()) {
-    setTimeout(() => {
-      modal.show();
-    }, 5000);
-  }
+  console.log(arr);
 };
