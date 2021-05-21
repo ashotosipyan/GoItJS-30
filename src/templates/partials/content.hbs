@@ -1,19 +1,33 @@
-<div class="container">
-    <div class="row">
-        {{#if isLoading}}
-        <img src="/src/assets/spinner2.gif" />
-        {{else}}
-        {{#each pageContent}}
-        <div class="card" style="width: 18rem;">
-            <img src="{{url}}" class="card-img-top" alt="{{title}}">
-            <div class="card-body">
-                <h5 class="card-title">{{title}}</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                    card's content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-        </div>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Task</th>
+            <th scope="col">Completed</th>
+            <th scope="col">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each data}}
+        <tr>
+            <th scope="row">{{id}}</th>
+            <td>{{todo_name}}</td>
+            <td>
+                <input 
+                    class="form-check-input" 
+                    type="checkbox" 
+                    name="toDoChange" 
+                    data-id="{{id}}" 
+                    {{#if completed}}checked{{/if}} 
+                />
+            </td>
+            <td>
+                <div class="btn-container">
+                    <i data-id="{{id}}" data-name="{{todo_name}}"  class="bi-pencil btnAction btnEdit"></i>
+                    <i data-id="{{id}}" class="bi-trash btnAction btnRemove"></i>
+                </div>
+            </td>
+        </tr>
         {{/each}}
-        {{/if}}
-    </div>
-</div>
+    </tbody>
+</table>

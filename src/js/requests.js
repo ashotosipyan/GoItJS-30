@@ -1,37 +1,27 @@
-import { BASE_URL } from "./constants.js";
+const doRequests = async (methodName, bodyData = null, todoID = null) => {
+  let baseUrl = "https://60a6ad00b970910017eb2287.mockapi.io/todos/";
 
-export const getPhotos = () => {
-  return fetch(`${BASE_URL}/photos`)
-    .then(response => {
-      if (response.status === 200) {
-        return response.json();
-      }
-    })
-    .catch(err => console.log(err));
-};
-
-export const test = async (methodType, data = null, toDoID = null) => {
-  let baseUrl = "https://jsonplaceholder.typicode.com/todos/";
-
-  if (methodType !== "POST") {
-    baseUrl = `${baseUrl}${toDoID}`;
+  if (methodName !== "GET" && methodName !== "POST") {
+    baseUrl = `https://60a6ad00b970910017eb2287.mockapi.io/todos/${todoID}`;
   }
-  console.log(baseUrl);
+
   try {
-    const test = await fetch(baseUrl, {
-      method: methodType,
+    const request = await fetch(baseUrl, {
+      method: methodName,
       headers: {
         "Content-Type": "application/json"
       },
-      body: data ? JSON.stringify(data) : null
+      body: bodyData ? JSON.stringify(bodyData) : null
     });
 
-    if (test.status === 201) {
-      return test.json();
+    if (request.status === 200 || request.status === 201) {
+      return request.json();
     } else {
-      return test.status;
+      alert(request.status);
     }
   } catch (error) {
     console.log(error);
   }
 };
+
+export default doRequests;

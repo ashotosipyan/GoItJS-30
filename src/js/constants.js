@@ -1,3 +1,1 @@
-export const USERNAME_KEY = "userName";
-export const USER_DATA_FLAG = "userDataFlag";
-export const BASE_URL = "https://jsonplaceholder.typicode.com";
+export const BASE_URL = "https://60a6ad00b970910017eb2287.mockapi.io/todos/";

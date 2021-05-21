@@ -9,7 +9,21 @@ body {
   margin: 0px;
   padding: 0px;
   height: 100%;
-  background-color: black;
+}
+
+.btnAction {
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  color: #ffffff;
+}
+
+.btnRemove {
+  background-color: #dc3545;
+}
+
+.btnEdit {
+  background-color: #0d6efd;
 }
 
 #timer {
